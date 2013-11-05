@@ -62,9 +62,6 @@ exports.findById = function (req, res) {
 
 exports.add = function (req, res) {
 
-
-   
-
   User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
     if (err) {
       if(!req.body.password){
@@ -74,11 +71,11 @@ exports.add = function (req, res) {
       }
     } else{
         res.render('user', {
-        title: "User Page",
-        messages : "The user has been added.",
-        id: user._id,
-        username: user.username,
-        password: user.password
+          title: "User Page",
+          messages : "The user has been added.",
+          id: user._id,
+          username: user.username,
+          password: user.password
       });
     }
   });
