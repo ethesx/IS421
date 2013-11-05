@@ -29,7 +29,7 @@ exports.auth = function (req, res) {
    } else {
    req.flash('info', 'Flash is back!'); 
    res.render('user', {
-      title: 'Logged In 2',
+      title: 'Welcome ... whoever you are (insert name)',
       id: 'id',
       username: 'username',
       password: 'password',
