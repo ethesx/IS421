@@ -26,7 +26,6 @@ block content
         .controls
           input(type='submit',value='Save')
           
-          - var _info = {info ? info : ''}
-          
-          h1= _info
+          if info          
+          h1= info
 
