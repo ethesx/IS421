@@ -2,13 +2,20 @@ doctype 5
 html
   head
     title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
     block scripts
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+      script(src='.scripts/bootstrap/bootstrap.min.js')
       script(type='text/javascript', src="./scripts/jquery/jquery.js")
       script(type='text/javascript', src="./scripts/underscore/underscore.js")
       script(type='text/javascript', src="./scripts/backbone/backbone.js")
       script(type='text/javascript', src="./scripts/require.js")
       script(type='text/javascript', src="./scripts/main.js")
-  link(rel='stylesheet', href='./css/style.css')
+  link(rel='stylesheet', href='../css/bootstrap.min.css', media='screen')
+  link(rel='stylesheet', href='../css/style.css')
     
   body
     block content

@@ -25,4 +25,8 @@ block content
       .control-group
         .controls
           input(type='submit',value='Save')
+          
+          - var _info = {info ? info : ''}
+          
+          h1= _info
 

@@ -26,7 +26,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.configure(function(){
-  app.set('port', process.env.PORT || 80);
+  app.set('port', process.env.PORT || 2600);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.set('title', 'Personal Learning Platform');

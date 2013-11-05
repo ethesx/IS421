@@ -11,7 +11,8 @@ exports.list = function(req, res) {
   User.find({}, function(err, users) {
     res.render('users', { 
       title: 'Personal Learning Platform', 
-      users: users 
+      users: users,
+      info: req.flash('info')
     });
  });
 }
@@ -51,6 +52,7 @@ exports.findById = function (req, res) {
       console.log(user);
       res.render('user', {
       title: "User Page",
+      messages: "",
       id: user._id,
       username: user.username,
       password: user.password 
@@ -59,17 +61,29 @@ exports.findById = function (req, res) {
 }
 
 exports.add = function (req, res) {
+
+
+   
+
   User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
-  if (err) {
-    console.log(err);
-  } 
-    res.render('user', {
-    title: "User Page",
-    id: user._id,
-    username: user.username,
-    password: user.password
+    if (err) {
+      if(!req.body.password){
+        //console.log(err);
+        req.flash('info','Please specify a password');
+          exports.list(req, res);
+      }
+    } else{
+        res.render('user', {
+        title: "User Page",
+        messages : "The user has been added.",
+        id: user._id,
+        username: user.username,
+        password: user.password
+      });
+    }
   });
-  });
+  
+ 
 }
 
 exports.update = function (req, res) {
