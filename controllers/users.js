@@ -64,12 +64,21 @@ exports.add = function (req, res) {
 
   User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
     if (err) {
+      console.error(err);
+      console.log("In error");
       if(!req.body.password){
-        //console.log(err);
+        console.log("In error, no password");
+        
         req.flash('info','Please specify a password');
-          exports.list(req, res);
+        exports.list(req, res);
+      }
+      else{
+        req.flash('info',err);
+        exports.list(req, res);
       }
     } else{
+        console.log("About to render");
+        
         res.render('user', {
           title: "User Page",
           messages : "The user has been added.",
@@ -77,6 +86,8 @@ exports.add = function (req, res) {
           username: user.username,
           password: user.password
       });
+        
+        console.log("Done render");
     }
   });
   
