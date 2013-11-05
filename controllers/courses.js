@@ -24,7 +24,7 @@ exports.findById = function (req, res) {
   Course.findOne({_id : req.params.cid}, function(err, course) {
       console.log(course);
       res.render('course', {
-      title: 'User Account',
+      title: 'Course information',
       coursetitle: course.title,
       cid: course.cid,
       id: course._id, 
