@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1 Test responses 
+  
+  div Listing of Responses
+    form.form-horizontal(method="get", action='/responses/list/', enctype="multipart/form-data")
+      .control-group
+            .controls
+               if(typeof(responses) !== "undefined")
+                  textarea(name='responses', value='#{responses}')
+      .control-group
+            .controls
+               input(type='submit',value='List Responses')
+             
+    
+              
+
+  br
+  br
+  div Save a Response
+    form.form-horizontal(method="post", action='/responses/add/', enctype="multipart/form-data")
+        .control-group
+          label.control-label(for='quote') MSRP
+          .controls
+            input.input-input-xlarge(type='text', value="", name="MSRP", placeholder='')
+        .control-group
+          label.control-label(for='term') Term
+          .controls
+            input.input-input-xlarge(type='text', value="", name="term", placeholder='')
+            
+        .control-group
+          .controls
+             input(type='submit',value='Save')    
+
+ 

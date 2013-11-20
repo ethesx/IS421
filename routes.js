@@ -7,7 +7,10 @@ var users = require('./controllers/users');
 var admin = require('./controllers/admin');
 //var assignments = require('./controllers/assignments');
 
-  app.get('/', index.index);
+var responses = require('./controllers/responses');
+
+
+  //app.get('/', index.index);
   app.get('/admin',ensureAuthenticated , admin.main); 
   app.get('/courses', courses.list);
   app.get('/api/courses', courses.jsonlist);
@@ -28,6 +31,13 @@ var admin = require('./controllers/admin');
     }
     res.send(obj);
   });
+  
+  app.get('/', responses.index);
+  app.get('/responses/', responses.index);
+  app.get('/responses/list', responses.list);
+  app.post('/responses/add', responses.add);
+  
+  
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
      res.cookie('lasturl', req.path);
